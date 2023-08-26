@@ -19,3 +19,80 @@ Remove the null values from the data
 Save the Clean data to the file
 
 # CODE and OUTPUT
+
+## CODE
+```
+import pandas as pd
+df = pd.read_csv("SampleDS.csv")
+df
+
+df.shape
+
+df.describe()
+
+df.info()
+
+df.isnull().sum()
+
+df.dropna(how='any').shape
+
+x = df.dropna(how='any')
+x
+
+df.dropna(how='all').shape
+df
+
+tot = df.dropna(subset=['TOTAL'],how='any')
+tot
+
+tot = df.dropna(subset=['M1','M2','M3','M4'],how='any')
+tot
+
+df.fillna(0)
+df
+
+df.fillna(method='ffill')
+
+df.interpolate()
+
+mn = df.TOTAL.mean()
+mn
+
+df.TOTAL.fillna(mn,inplace=False)
+
+td = df.TOTAL.fillna(mn,inplace = True)
+
+df
+
+l = df.M1.interpolate()
+l
+df.isnull()
+
+df.notnull()
+
+df.dropna()
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+df
+
+df.duplicated()
+df
+
+df.drop_duplicates(inplace=True)
+df
+
+df['cd']=pd.to_datetime(df['DOB'])
+df
+
+for x in df.index:
+  if df.loc[x,'AVG']>100:
+    df.drop(x,inplace = True)
+df
+
+```
